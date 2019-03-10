@@ -6,6 +6,7 @@
     <meta name="description" content="Basic example for Point Cloud component."></meta>
     <script src="js/aframe.min.js"></script>
     <script src="js/aframe-pointcloud-component.js"></script>
+    <script src="js/aframe-gui.js"></script>
 
   </head>
   <body>
@@ -15,6 +16,37 @@
         <img id="skyTexture" src="https://cdn.aframe.io/a-painter/images/sky.jpg">
       </a-assets>
 
+	<a-gui-flex-container 
+		flex-direction="column" justify-content="center" align-items="normal"
+		opacity="0.9" width="3" height="3" position="3 3 0" rotation="0 0 0">
+		
+		<a-gui-button 
+			width="2.5" height="0.75"
+			onclick="testButtonAction" key-code="32"
+			value="Button"
+			font-family="Arial"
+			margin="0 0 0.05 0">
+		</a-gui-button>
+
+		<a-gui-toggle
+			width="2.5" height="0.75"
+			onclick="testToggleAction"
+			value="label toggle"
+			font-family="Arial"
+			margin="0 0 0.05 0">
+		</a-gui-toggle>
+
+		<a-gui-radio
+			width="2.5" height="0.75"
+			onclick="testToggleAction"
+			value="label radio"
+			font-family="Arial"
+			margin="0 0 0.05 0"
+        		radiosizecoef="1">
+i		</a-gui-radio>
+
+	</a-gui-flex-container>
+
       <a-plane src="#groundTexture" rotation="-90 0 0" height="100" width="100"></a-plane>
       <a-light type="ambient" color="#445451"></a-light>
       <a-light type="point" intensity="2" position="2 4 4"></a-light>
@@ -22,15 +54,15 @@
       <a-entity laser-controls line="color: red; opacity: 0.75"></a-entity>
 
       <a-pointcloud
-        scale="0.2 0.2 0.2" 
+        scale="0.5 0.5 0.5" 
         position="0 3 0" 
         src="url(Sphere.ply)" 
-        size="0.02"
+        size="0.2"
 	texture="url(VGTU-logo.png)"
         depthWrite="false">
       </a-pointcloud>
 
-	<a-entity camera look-controls>
+	<!--a-entity camera look-controls>
 	<a-entity cursor="fuse: true; fuseTimeout: 500"
             position="0 0 -1"
             geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
@@ -40,10 +72,21 @@
 
 	<a-camera position="1 1.5 2">
 		<a-cursor intersection-spawn="event: click; mixin: voxel"></a-cursor>
-	</a-camera>
+	</a-camera-->
+
+	<a-entity id="cameraRig" position="0 1.6 3">
+		<a-camera look-controls>
+			<a-gui-cursor id="cursor"
+				raycaster="objects: [gui-interactable]"
+				fuse="true" fuse-timeout="1000"
+				design="dot">
+			</a-gui-cursor>
+		</a-camera>
+	</a-entity>
+
 
     </a-scene>
-    <script>
+    <!--script>
                 AFRAME.registerComponent('cursor-listener', {
                 init: function () {
                 var lastIndex = -1;
@@ -55,7 +98,7 @@
                 });
                 }
                 });
-    </script>
+    </script-->
 
   </body>
 </html>
