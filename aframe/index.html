@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Lab2 - VR application</title>
     <meta name="description" content="Basic example for Point Cloud component."></meta>
-    <script src="js/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
     <script src="js/aframe-pointcloud-component.js"></script>
     <script src="js/aframe-gui.js"></script>
 
@@ -12,8 +12,8 @@
   <body>
     <a-scene>
       <a-assets>
-        <img id="groundTexture" src="https://cdn.aframe.io/a-painter/images/floor.jpg">
-        <img id="skyTexture" src="https://cdn.aframe.io/a-painter/images/sky.jpg">
+        <img id="groundTexture" src="floor.jpg">
+        <img id="skyTexture" src="sky.jpg">
       </a-assets>
 
 	<a-gui-flex-container 
@@ -51,7 +51,7 @@ i		</a-gui-radio>
       <a-light type="ambient" color="#445451"></a-light>
       <a-light type="point" intensity="2" position="2 4 4"></a-light>
       <a-sky src="#skyTexture" radius="30" theta-length="90" height="2048" width="2048"></a-sky>
-      <a-entity laser-controls line="color: red; opacity: 0.75"></a-entity>
+      <!--a-entity laser-controls line="color: red; opacity: 0.75"></a-entity-->
 
       <a-pointcloud
         scale="0.5 0.5 0.5" 
